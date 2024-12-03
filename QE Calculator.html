@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+    <title>Quadratic Equation Calculator</title>
+  
+  
+  
+    <style>
+    
+    
+    
+  body {
+    font-family: Arial, sans-serif;
+    background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXNXpfTyBelsNMUkW1Xq5as7opNVCVzQKdzQ&usqp=CAU);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+
+
+
+  .calculator {
+    position: relative;
+    justify-content: center;
+    background: transparent;
+    backdrop-filter: blur(12px);
+    box-shadow: 5px 5px 5px 5px rgb(0,0,0,3);
+    padding: 20px;
+    border-radius: 20px;
+    width: 300px;
+    text-align: center;
+}
+
+
+
+
+  h1 {
+    margin-bottom: 20px;
+    font-size: 20px;
+    text-shadow: 5px 5px 5px rgb(0,0,0,3);
+    color: white;
+}
+
+
+
+
+  form {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+  label {
+    margin: 5px 0;
+    font-size: 14px;
+    color: white;
+}
+
+
+
+
+  input {
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+
+
+
+  button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+
+
+  button:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+  #result {
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+        
+        
+        
+        
+    </style>
+ 
+ 
+ 
+    
+    </head>
+<body>
+    
+    
+    <div class="calculator">
+       
+    
+      
+<h1>Quadratic Equation</h1>
+        
+ 
+        
+<form id="quadraticForm">
+
+<label for="a">Coefficient a:</label>
+            
+<input type="number" id="a" step="any" placeholder="Enter the value of a" required>
+            
+<label for="b">Coefficient b:</label>
+            
+<input type="number" id="b" step="any" placeholder="Enter the value of b" required>
+            
+<label for="c">Constant Term:</label>
+            
+<input type="number" id="c" step="any" placeholder="Enter the constant term" required>
+            
+<button type="button" onclick="calculateRoots()">Calculate Roots</button>
+        
+  </form>
+        
+<div id="result"></div>
+
+
+</div>
+  
+  
+  
+  
+  
+    <script>
+
+function calculateRoots() {
+
+
+const a = parseFloat(document.getElementById("a").value);
+            
+
+const b = parseFloat(document.getElementById("b").value);
+           
+           
+const c = parseFloat(document.getElementById("c").value);
+            
+            
+const resultDiv = document.getElementById("result");
+
+
+if (isNaN(a) || isNaN(b) || isNaN(c)) {
+                
+                
+resultDiv.textContent = "Please enter valid numbers!";
+                return;
+            }
+
+            
+if (a === 0) {
+                
+
+resultDiv.textContent = "Not a quadratic equation (a must not be 0).";
+                return;
+            }
+
+            
+const discriminant = Math.pow(b, 2) - 4 * a * c;
+
+if (discriminant > 0) {
+                
+                
+const root1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+                
+                
+const root2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+                
+                
+resultDiv.textContent = `The roots are real: Root 1 = ${root1.toFixed(2)}, Root 2 = ${root2.toFixed(2)}`;
+            } else if (discriminant === 0) {
+                
+                
+const root = -b / (2 * a);
+                
+                
+resultDiv.textContent = `The roots are real and equal: Root = ${root.toFixed(2)}`;
+            } else {
+                
+                
+const realPart = (-b / (2 * a)).toFixed(2);
+                
+                
+const imaginaryPart = (Math.sqrt(-discriminant) / (2 * a)).toFixed(2);
+                
+                
+resultDiv.textContent = `The roots are complex: Root 1 = ${realPart} + ${imaginaryPart}i, Root 2 = ${realPart} - ${imaginaryPart}i`;
+            }
+        }
+        
+        
+    </script>
+</body>
+</html>
