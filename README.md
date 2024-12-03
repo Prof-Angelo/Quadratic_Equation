@@ -1,1 +1,1 @@
-# Quadratic_Equation
+Licensed by: Github
